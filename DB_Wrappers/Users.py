@@ -3,6 +3,7 @@ import config
 import requests
 from models import User
 
+
 class UsersDB:
     def __init__(self, db):
         self.db = db
@@ -36,7 +37,10 @@ class UsersDB:
 
         name = first_name + " " + last_name
         user = User(id=id)
-        user.add_details(name=name, first_name=data["first_name"], gender=gender, pic_url=data["profile_pic"])
+        user.add_details(name=name,
+            			 first_name=first_name,
+            			 gender=gender,
+            			 pic_url=data["profile_pic"])
         self.db.session.add(user)
         self.db.session.commit()
 
